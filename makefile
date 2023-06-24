@@ -20,10 +20,10 @@ $(BUILT_MODULES_DIR)/%.pcm: $(MODULES_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -x c++-module $< --precompile -o $@
 
 
-main: src/main.cpp $(PCM_MODULES) impl.o
+main: src/main.cpp $(PCM_MODULES) MK.Math-impl.o
 	$(CXX) $(CXXFLAGS) build/impl.o -o executables/$@ $< $(PCM_MODULES)
 
-impl.o: 
-	$(CXX) $(CXXFLAGS) -c src/modules/implements/impl.cpp -o build/impl.o
+MK.Math-impl.o: 
+	$(CXX) $(CXXFLAGS) -c src/modules/implements/MK.Math-impl.cpp -o build/impl.o
 clean:
-	rm -f executables/main  $(PCM_MODULES) build/impl.o
+	rm -f executables/main  $(PCM_MODULES) build/MK.Math-impl.o
