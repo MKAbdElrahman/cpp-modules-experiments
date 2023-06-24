@@ -14,7 +14,10 @@ EXECUTABLE := executables/main
 MODULES_INTERFACES_DIR := src/modules/interfaces
 MODULES_IMPLS_DIR := src/modules/implements
 
-MODULE_INTERFACES := MK.Welcome MK.Math MK.School
+MODULE_INTERFACES := MK.Welcome \
+                     MK.Math \
+                     MK.School  MK.MathLib-Powers MK.MathLib-Roots MK.MathLib 
+
 MODULES_IMPLS := MK.Math-impl MK.School-impl
 MAIN_SOURCE := src/main.cpp
 
