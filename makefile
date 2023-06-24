@@ -7,13 +7,17 @@ CXXFLAGS := -std=c++20 \
             -fprebuilt-module-path=./build
 
 
-MODULES_INTERFACES_DIR := src/modules/interfaces
-MODULES_IMPLEMENTATIONS_DIR := src/modules/implements
+
+SOURCE_DIR := src
+BUILD_DIR := build
+
+
+MODULES_INTERFACES_DIR := $(SOURCE_DIR)/modules/interfaces
+MODULES_IMPLEMENTATIONS_DIR := $(SOURCE_DIR)/modules/implements
 
 MODULE_INTERFACES := MK.Welcome MK.Math 
 MODULES_IMPLEMENTATIONS := MK.Math-impl
 
-BUILD_DIR := build
 
 
 PCM_MODULES := $(addsuffix .pcm, $(addprefix $(BUILD_DIR)/, $(MODULE_INTERFACES)))
