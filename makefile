@@ -21,9 +21,8 @@ $(BUILT_MODULES_DIR)/%.pcm: $(MODULES_DIR)/%.cpp
 
 
 main: src/main.cpp $(PCM_MODULES) MK.Math-impl.o
-	$(CXX) $(CXXFLAGS) build/impl.o -o executables/$@ $< $(PCM_MODULES)
-
+	$(CXX) $(CXXFLAGS) build/MK.Math-impl.o -o executables/$@ $< $(PCM_MODULES)
 MK.Math-impl.o: 
-	$(CXX) $(CXXFLAGS) -c src/modules/implements/MK.Math-impl.cpp -o build/impl.o
+	$(CXX) $(CXXFLAGS) -c src/modules/implements/MK.Math-impl.cpp -o build/MK.Math-impl.o
 clean:
 	rm -f executables/main  $(PCM_MODULES) build/MK.Math-impl.o
