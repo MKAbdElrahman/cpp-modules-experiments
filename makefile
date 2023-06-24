@@ -9,8 +9,8 @@ CXXFLAGS := -std=c++20 \
 MODULES_INTERFACES_DIR := src/modules/interfaces
 BUILD_DIR := build
 
-MODULES := MK.Welcome MK.Math 
-PCM_MODULES := $(addsuffix .pcm, $(addprefix $(BUILD_DIR)/, $(MODULES)))
+MODULE_INTERFACES := MK.Welcome MK.Math 
+PCM_MODULES := $(addsuffix .pcm, $(addprefix $(BUILD_DIR)/, $(MODULE_INTERFACES)))
 
 .PHONY: all clean
 
