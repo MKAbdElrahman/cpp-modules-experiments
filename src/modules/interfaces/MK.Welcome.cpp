@@ -9,8 +9,8 @@ export void welcome(){
     print_hello();
 }}
 
-module :private;
 
+module :private;
 void MK::Welcome::print_hello(){
     cout << "Hello Modules" << std::endl;
 }

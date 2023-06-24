@@ -11,26 +11,27 @@ SOURCE_DIR :=  src
 BUILD_DIR := build
 
 MODULES_INTERFACES_DIR := src/modules/interfaces
-MODULES_IMPLEMENTATIONS_DIR := src/modules/implements
+MODULES_IMPLS_DIR := src/modules/implements
 
 
 MODULE_INTERFACES := MK.Welcome MK.Math MK.School
 PCM_MODULES := $(addsuffix .pcm, $(addprefix $(BUILD_DIR)/, $(MODULE_INTERFACES)))
 
-MODULES_IMPLEMENTATIONS := MK.Math-impl MK.School-impl
+MODULES_IMPLS := MK.Math-impl MK.School-impl
 
 .PHONY: all clean
 
-all:  main
 
+# compile module interfaces
 $(BUILD_DIR)/%.pcm: $(MODULES_INTERFACES_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -x c++-module $< --precompile -o $@
-
-main: src/main.cpp $(PCM_MODULES) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLEMENTATIONS)))
-	$(CXX) $(CXXFLAGS) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLEMENTATIONS))) -o executables/$@ $< $(PCM_MODULES)
-
-$(BUILD_DIR)/%.o: $(MODULES_IMPLEMENTATIONS_DIR)/%.cpp
+# compile module implementations
+$(BUILD_DIR)/%.o: $(MODULES_IMPLS_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+
+main: src/main.cpp $(PCM_MODULES) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLS)))
+	$(CXX) $(CXXFLAGS) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLS))) -o executables/$@ $< $(PCM_MODULES)
+all:  main
 clean:
-	rm -f executables/main $(PCM_MODULES) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLEMENTATIONS)))
+	rm -f executables/main $(PCM_MODULES) $(addprefix $(BUILD_DIR)/, $(addsuffix .o, $(MODULES_IMPLS)))
