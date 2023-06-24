@@ -10,8 +10,8 @@ CXXFLAGS := -std=c++20 \
 SOURCE_DIR :=  src 
 BUILD_DIR := build
 
-MODULES_INTERFACES_DIR := $(SOURCE_DIR)/modules/interfaces
-MODULES_IMPLEMENTATIONS_DIR := $(SOURCE_DIR)/modules/implements
+MODULES_INTERFACES_DIR := src/modules/interfaces
+MODULES_IMPLEMENTATIONS_DIR := src/modules/implements
 
 
 MODULE_INTERFACES := MK.Welcome MK.Math MK.School
